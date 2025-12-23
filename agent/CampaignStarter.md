@@ -25,6 +25,27 @@ This prompt provides a framework for generating and initializing a new D&D 5e ca
 
 **CRITICAL**: When creating a new campaign DO NOT REFERENCE ANY FILES OUTSIDE THE CAMPAIGN STRUCTURE. Limit all reads to the folder structure created by this tool. All agents must remain locked within the newly created campaign folder structure and ensure all files/artifacts are created in the correct locations.
 
+## Usage Instructions
+
+1. **Configuration Phase**: Ask campaign configuration questions one at a time, waiting for each answer before proceeding to the next
+2. **File Structure Creation**: Create the campaign directory structure using PascalCase conversion
+3. **File Creation**: Use the templates in the `~/.config/opencode/template/` folder to create the campaign structure
+4. **Content Generation**: Generate content based on the configuration answers
+5. **Agent Lock Enforcement**: Ensure all agents remain locked within the campaign folder structure and create files only in designated locations
+6. **Character Creation**: Use @Character Creator for guided player character creation
+7. **Consistency Validation**: Use `@consistency-checker` to validate all created entities before finalizing
+8. **Reference Materials**: Use the Dungeon Master Prompt for ongoing game management
+9. **Maintenance**: Update Campaign.md as the world evolves and add new hooks to Hooks.md as needed
+
+## Best Practices
+
+- Start small and expand organically
+- Create content that can grow with player actions
+- Leave room for improvisation and player choice
+- Maintain consistency with D&D 5e rules
+- Always run consistency validation with `@consistency-checker` before finalizing campaign
+- Update files regularly to reflect campaign changes
+
 ## Campaign Initialization Process
 
 IF ANY PART OF THIS FAILS EXIT IMMEDIATELY.
@@ -291,24 +312,3 @@ Example invocation:
 - [ ] Add consistency check findings to todo list
 - [ ] All validation issues resolved and confirmed fixed
 - [ ] Initial session prepared
-
-## Usage Instructions
-
-1. **Configuration Phase**: Ask campaign configuration questions one at a time, waiting for each answer before proceeding to the next
-2. **File Structure Creation**: Create the campaign directory structure using PascalCase conversion
-3. **File Creation**: Use the templates in the `~/.config/opencode/template/` folder to create the campaign structure
-4. **Content Generation**: Generate content based on the configuration answers
-5. **Agent Lock Enforcement**: Ensure all agents remain locked within the campaign folder structure and create files only in designated locations
-6. **Character Creation**: Use @Character Creator for guided player character creation
-7. **Consistency Validation**: Use `@consistency-checker` to validate all created entities before finalizing
-8. **Reference Materials**: Use the Dungeon Master Prompt for ongoing game management
-9. **Maintenance**: Update Campaign.md as the world evolves and add new hooks to Hooks.md as needed
-
-## Best Practices
-
-- Start small and expand organically
-- Create content that can grow with player actions
-- Leave room for improvisation and player choice
-- Maintain consistency with D&D 5e rules
-- Always run consistency validation with `@consistency-checker` before finalizing campaign
-- Update files regularly to reflect campaign changes
