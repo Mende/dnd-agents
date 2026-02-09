@@ -15,7 +15,7 @@ last_modified: YYYY-MM-DD
 ## Basic Information
 - **Name:** 
 - **Title/Role:** 
-- **Race:** 
+- **Species/Ancestry:** 
 - **Gender:** 
 - **Age:** 
 - **Occupation:** 
@@ -31,7 +31,7 @@ last_modified: YYYY-MM-DD
 - **Equipment:** 
 
 ## Personality
-- **Alignment:** 
+- **Moral Outlook:** 
 - **Traits:** 
 - **Ideals:** 
 - **Bonds:** 
@@ -47,8 +47,8 @@ last_modified: YYYY-MM-DD
 - **Current Situation:** 
 
 ## Abilities & Skills
-- **Class:** 
-- **Level:** 
+- **Role/Profession:** 
+- **Experience/Competency:** 
 - **Key Skills:** 
 - **Special Abilities:** 
 - **Weaknesses:** 
@@ -74,7 +74,7 @@ last_modified: YYYY-MM-DD
 - **Combat Taunts:** 
 - **Reaction to Player Actions:** 
 
-## Game Master Notes
+## Storyteller Notes
 - **Secret Knowledge:** 
 - **Development Arc:** 
 - **Session Notes:** 
