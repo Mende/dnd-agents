@@ -64,7 +64,7 @@ Create the campaign directory structure using the campaign name converted to Pas
 # Convert campaign name to PascalCase and create directory structure
 CAMPAIGN_NAME="Your Campaign Name"
 PASCAL_CASE=$(echo "$CAMPAIGN_NAME" | sed 's/[^a-zA-Z0-9 ]//g' | sed 's/\b\([a-z]\)/\u\1/g' | sed 's/ //g')
-mkdir -p "$PASCAL_CASE"/{Locations,Organizations,Resources}
+mkdir -p "$PASCAL_CASE"/{Locations,Organizations,NPCs,Resources}
 ```
 
 #### Entity ID Tracking System
@@ -76,12 +76,13 @@ Create an ID tracking file to manage unique entity IDs:
 echo "# Entity ID Tracking
 location_counter: 0
 organization_counter: 0
+npc_counter: 0
 " > "$PASCAL_CASE"/entity_ids.yaml
-```
 
 **ID Format Rules:**
 - Locations: LOC-001, LOC-002, etc.  
 - Organizations: ORG-001, ORG-002, etc.
+- NPCs: NPC-001, NPC-002, etc.
 
 #### Directory Structure
 
@@ -90,6 +91,7 @@ organization_counter: 0
 ├── Hooks.md
 ├── Locations/          # Only @location-creator creates files here
 ├── Organizations/     # Only @organization-creator creates files here
+├── NPCs/              # Only @npc-creator creates files here
 └── Resources/         # Campaign-specific resources
 
 ### 3. Campaign Configuration Questions
@@ -118,74 +120,7 @@ Ask the user these questions one at a time to customize the campaign. Wait for e
 - Supernatural powers and their sources
 - Campaign tone and style guidelines
 
-#### Hooks.md
-
-Use `@hook-creator` to create comprehensive adventure hooks for the campaign. 
-
-**CRITICAL**: The Hook Creator must remain locked within the campaign folder structure and create the Hooks.md file ONLY in the campaign root directory.
-
-The Hook Creator will handle:
-- Campaign analysis and integration (reading only from campaign folder)
-- Proper categorization of hooks (major arcs, side quests, faction-specific, location-based)
-- Detailed hook structure with setup, investigation, and resolution
-- Integration with existing NPCs, locations, and organizations
-- Appropriate challenge levels for the party
-
-Example invocation:
-```
-@hook-creator Create adventure hooks for a new campaign. Campaign has medieval fantasy setting, starting village of 200 people. Provide context about campaign themes and existing elements.
-```
-
-### 6. Starting Locations
-
-Create a todo list to create each location individually using `@location-creator`. 
-
-**CRITICAL**: The Location Creator must remain locked within the campaign folder structure and create location files ONLY in the `<CAMPAIGN_NAME>/Locations` folder.
-
-**IMPORTANT**
-LOCATION NAMES MUST BE UNIQUE!
-ONLY CREATE 1 LOCATION PER USE OF @location-creator!
-EACH LOCATION MUST RECEIVE A UNIQUE LOC-XXX ID FROM THE entity_ids.yaml TRACKER!
-
-The Location Creator will handle:
-- Unique name generation using `@name-generator`
-- Entity ID assignment from entity_ids.yaml tracking file
-- Template compliance with `~/.config/opencode/template/Location.md` (including frontmatter ID)
-- Proper integration with campaign setting (reading only from campaign folder)
-- Consistency validation with `@consistency-checker`
-
-Example todo list items:
-- Create starting village for the campaign
-- Create nearby dungeon for adventure
-- Create surrounding forest region
-
-Example invocation for each location:
-```
-@location-creator Create a starting town. Location Type: Village, Setting: Medieval Fantasy, Population: ~200. Provide context about the campaign setting and existing locations.
-```
-
-### 7. Initial Adventure Hooks
-
-**Major Story Arcs** (Create 1-2):
-- **Epic Threat**: A world-ending danger that grows over time
-- **Ancient Prophecy**: A foretold event that the players must fulfill or prevent
-- **Political Intrigue**: A complex web of alliances and betrayals that shapes the region
-
-**Side Quest Hooks** (Create 5-10):
-- **Local Problem**: Something affecting the town or immediate area
-- **Mysterious Stranger**: Newcomer with secrets or problems
-- **Ancient Discovery**: Recently uncovered ruins/artifacts
-- **Faction Conflict**: Tension between local groups
-- **Personal Quest**: Character-specific opportunities
-- **Missing Person**: Someone has disappeared under suspicious circumstances
-- **Monster Problem**: A creature is terrorizing the local area
-- **Delivery Task**: Important package needs to reach its destination
-- **Investigation**: Mystery that needs solving
-- **Rescue Mission**: Someone needs to be saved from danger
-
-### 8. World-Building Elements
-
-#### Factions and Organizations
+### 6. Organizations
 
 Create a todo list to create each organization individually using `@organization-creator`. 
 
@@ -213,13 +148,111 @@ Example invocation for each organization:
 @organization-creator Create a major merchant guild for the campaign. Organization Type: Merchant Guild, Purpose: Trade Control. Provide context about the campaign setting and existing organizations.
 ```
 
+### 7. NPCs
+
+Create a todo list to create each NPC individually using `@npc-creator`. 
+
+**CRITICAL**: The NPC Creator must remain locked within the campaign folder structure and create NPC files ONLY in the `<CAMPAIGN_NAME>/NPCs` folder.
+
+**IMPORTANT**
+NPC NAMES MUST BE DISTINCT AND UNIQUE!
+ONLY CREATE 1 NPC PER USE OF @npc-creator!
+EACH NPC MUST RECEIVE A UNIQUE NPC-XXX ID FROM THE entity_ids.yaml TRACKER!
+
+The NPC Creator will handle:
+- Unique name generation using `@name-generator`
+- Entity ID assignment from entity_ids.yaml tracking file
+- Template compliance with `~/.config/opencode/template/NPC.md` (including frontmatter ID)
+- Proper integration with campaign setting (reading only from campaign folder)
+- Consistency validation with `@consistency-checker`
+
+Example todo list items:
+- Create starting village mayor
+- Create local blacksmith
+- Create mysterious stranger for plot hooks
+
+Example invocation for each NPC:
+```
+@npc-creator Create a starting village mayor. Role: Village Leader, Setting: Medieval Fantasy. Provide context about the campaign setting and existing organizations.
+```
+
+### 8. Locations
+
+Create a todo list to create each location individually using `@location-creator`. 
+
+**CRITICAL**: The Location Creator must remain locked within the campaign folder structure and create location files ONLY in the `<CAMPAIGN_NAME>/Locations` folder.
+
+**IMPORTANT**
+LOCATION NAMES MUST BE UNIQUE!
+ONLY CREATE 1 LOCATION PER USE OF @location-creator!
+EACH LOCATION MUST RECEIVE A UNIQUE LOC-XXX ID FROM THE entity_ids.yaml TRACKER!
+
+The Location Creator will handle:
+- Unique name generation using `@name-generator`
+- Entity ID assignment from entity_ids.yaml tracking file
+- Template compliance with `~/.config/opencode/template/Location.md` (including frontmatter ID)
+- Proper integration with campaign setting (reading only from campaign folder)
+- Consistency validation with `@consistency-checker`
+
+Example todo list items:
+- Create starting village for the campaign
+- Create nearby dungeon for adventure
+- Create surrounding forest region
+
+Example invocation for each location:
+```
+@location-creator Create a starting town. Location Type: Village, Setting: Medieval Fantasy, Population: ~200. Provide context about the campaign setting and existing locations.
+```
+
+### 9. Hooks
+
+Use `@hook-creator` to create comprehensive adventure hooks for the campaign. 
+
+**CRITICAL**: The Hook Creator must remain locked within the campaign folder structure and create the Hooks.md file ONLY in the campaign root directory.
+
+The Hook Creator will handle:
+- Campaign analysis and integration (reading only from campaign folder)
+- Proper categorization of hooks (major arcs, side quests, faction-specific, location-based)
+- Detailed hook structure with setup, investigation, and resolution
+- Integration with existing NPCs, locations, and organizations
+- Appropriate challenge levels for the party
+
+Example invocation:
+```
+@hook-creator Create adventure hooks for a new campaign. Campaign has medieval fantasy setting, starting village of 200 people. Provide context about campaign themes and existing elements.
+```
+
+**Major Story Arcs** (Create 1-2):
+- **Epic Threat**: A world-ending danger that grows over time
+- **Ancient Prophecy**: A foretold event that the players must fulfill or prevent
+- **Political Intrigue**: A complex web of alliances and betrayals that shapes the region
+
+**Side Quest Hooks** (Create 5-10):
+- **Local Problem**: Something affecting the town or immediate area
+- **Mysterious Stranger**: Newcomer with secrets or problems
+- **Ancient Discovery**: Recently uncovered ruins/artifacts
+- **Faction Conflict**: Tension between local groups
+- **Personal Quest**: Character-specific opportunities
+- **Missing Person**: Someone has disappeared under suspicious circumstances
+- **Monster Problem**: A creature is terrorizing the local area
+- **Delivery Task**: Important package needs to reach its destination
+- **Investigation**: Mystery that needs solving
+- **Rescue Mission**: Someone needs to be saved from danger
+
+### 10. World-Building Elements
+
+#### Resources
+- Common creatures in the area
+- Local materials and crafting components
+- Unique items or artifacts
+
 #### Resources
 - Common creatures in the area
 - Local materials and crafting components
 - Unique items or artifacts
 
 
-### 9. Consistency Validation
+### 11. Consistency Validation
 
 After creating all campaign content, run consistency validation:
 
@@ -235,13 +268,14 @@ Example invocation:
 @consistency-checker Please validate the newly created campaign for consistency issues, template compliance, and NPC name similarity.
 ```
 
-### 10. Campaign Launch Checklist
+### 12. Campaign Launch Checklist
 
 - [ ] Create the campaign folder structure
 - [ ] Campaign.md created with overview in the new campaign folder
-- [ ] Hooks.md created using @hook-creator with comprehensive adventure hooks
-- [ ] Todo list created for starting locations
 - [ ] Todo list created for organizations
+- [ ] Todo list created for NPCs
+- [ ] Todo list created for locations
+- [ ] Hooks.md created using @hook-creator with comprehensive adventure hooks
 - [ ] All todo items completed (1 entity per agent use)
 - [ ] File structure verified
 - [ ] Consistency validation completed with @consistency-checker
