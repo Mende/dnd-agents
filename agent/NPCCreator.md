@@ -187,7 +187,7 @@ After creating an NPC, automatically run consistency validation:
 - Shopkeepers and merchants
 - Innkeepers and tavern staff
 - Guards and town watch
-- Healers and clerics
+- Healers and spiritual leaders
 
 ### Information Sources
 - Sages and scholars
