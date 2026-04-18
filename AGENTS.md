@@ -22,3 +22,8 @@
 - Use consistent indentation (2 spaces for YAML, 4 spaces for markdown lists)
 - Follow game system conventions as defined in GameSystem.md for campaign content
 - Use the ConsistencyChecker agent to validate content before finalizing
+
+<!-- SPECKIT START -->
+For additional context about technologies to be used, project structure,
+shell commands, and other important information, read the current plan
+<!-- SPECKIT END -->
